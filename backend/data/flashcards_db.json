@@ -1,0 +1,29 @@
+{
+    "decks": {
+        "2c08f6fa-948a-48a5-a203-37f3408b7ac8": {
+            "topic": "Locking",
+            "source": "sample_notes.txt",
+            "created_at": "1773246363.0579443",
+            "cards": [
+                {
+                    "id": "1080966c-dc08-49ad-b6b2-4b2b01d95c3a",
+                    "front": "Kinematics",
+                    "back": "The study of motion without considering the forces causing it.",
+                    "mastery_level": 0
+                },
+                {
+                    "id": "83831131-ac58-4e2e-b8f5-6eb7186f6659",
+                    "front": "Uniform Acceleration",
+                    "back": "A constant acceleration where velocity changes at a steady rate.",
+                    "mastery_level": 0
+                },
+                {
+                    "id": "7caf19a7-6faf-4736-884a-dae451b15e0b",
+                    "front": "Newton's Third Law",
+                    "back": "For every action, there is an equal and opposite reaction.",
+                    "mastery_level": 0
+                }
+            ]
+        }
+    }
+}

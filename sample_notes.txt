@@ -1,0 +1,25 @@
+Sample Physics Notes: Kinematics and Dynamics
+
+1. Kinematics
+Kinematics is the branch of mechanics that describes the motion of points, bodies, and systems without considering the forces that cause the motion.
+Key equations for uniform acceleration (a = constant):
+v = u + at
+s = ut + (1/2)at^2
+v^2 = u^2 + 2as
+where u is initial velocity, v is final velocity, a is acceleration, s is displacement, and t is time.
+
+2. Newton's Laws of Motion
+First Law (Inertia): An object remains at rest or in uniform motion in a straight line unless acted upon by an external force.
+Second Law: The rate of change of momentum of a body is directly proportional to the applied force. F = ma.
+Third Law: For every action, there is an equal and opposite reaction.
+
+3. Work, Energy, and Power
+Work is defined as force applied over a distance. W = F * d * cos(theta).
+Kinetic Energy (KE) = (1/2)mv^2.
+Potential Energy (PE) = mgh.
+Power is the rate at which work is done. P = W/t.
+
+4. Thermodynamics
+The study of heat and temperature and their relation to energy and work.
+First Law of Thermodynamics: Energy cannot be created or destroyed, only transformed.
+Second Law of Thermodynamics: The total entropy of an isolated system can never decrease over time.

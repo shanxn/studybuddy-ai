@@ -1,0 +1,45 @@
+StudyBuddy AI - Application Technical Audit & Architecture Overview
+==================================================================
+
+1. OVERVIEW & CAPABILITIES
+--------------------------
+StudyBuddy AI is a fully localized, open-source AI tutoring platform designed to ingest educational materials (PDFs, Images, YouTube links) and provide interactive, multi-modal study tools.
+- Runs 100% Locally: Uses Ollama (Phi-3) and HuggingFace SentenceTransformers.
+- Privacy First: No data is sent to OpenAI or cloud providers.
+
+2. SYSTEM ARCHITECTURE
+----------------------
+Frontend: React + Vite + TailwindCSS + Lucide Icons
+Backend: FastAPI + Python 3.13
+Vector Database: FAISS (Facebook AI Similarity Search)
+Document DB: SQLite3 (using Write-Ahead Logging for concurrency)
+
+3. CORE FEATURES & FIXES IMPLEMENTED
+------------------------------------
+A. Responsive Full-Width UI
+   - The entire dashboard and all 16 pages were refactored to utilize a standard full-width, responsive React container. 
+   - Solved layout scaling issues (cards rendering too small) in Practice Mode, Planner, and Analytics.
+
+B. The Knowledge Ingestion Pipeline
+   - Users can upload local files or paste YouTube URLs.
+   - Files are parsed via PyPDF2 / docx2txt, and images via PyTesseract OCR.
+   - Transcripts are pulled using `youtube-transcript-api`.
+   - Data is chunked, embedded using `all-MiniLM-L6-v2`, and stored in FAISS.
+   - A background thread triggers the local LLM to automatically generate summaries and Flashcards without blocking the user interface.
+
+C. Thread-Safe Offline Persistence
+   - To solve application freezing during heavy AI generation, SQLite was configured to use WAL (Write-Ahead Logging) mode.
+   - FAISS vector indexing and Flashcard JSON writes are wrapped in Python `threading.Lock()` contexts to allow asynchronous reads while safely writing data to disk.
+
+D. Multi-Modal AI Tutor
+   - Provides multiple prompt modes: Explain, Exam, Quick Answer, Step-by-Step, and Socratic Mode.
+   - The Tutor is strictly grounded to the uploaded context (RAG). If asked about unrelated topics (e.g., "videogames"), it strictly refuses to answer, preventing hallucinations.
+
+E. Study Tools Audit
+   - Practice Mode: Generates dynamic JSON quizzes (MCQs) mapped directly to uploaded notes. Solved LangChain PromptTemplate parsing errors.
+   - Knowledge Map: Extracts entities and relationships via LLM to build a visual Cytoscape graph. Solved LLM trailing-comma JSON errors using robust Regex sanitizers.
+   - Deep Focus Timer: 25-minute Pomodoro timer that synchronizes completed sessions to the persistent Learning Analytics profile.
+
+4. END-TO-END VERIFICATION
+--------------------------
+The application has passed extensive automated browser subagent testing. File uploads successfully trigger background FAISS embeddings, the UI falls back gracefully if the local AI model is slow, and data successfully persists entirely on the local hard drive after a server reboot.
