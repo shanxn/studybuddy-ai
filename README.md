@@ -104,4 +104,3 @@ StudyBuddy AI is designed with **100% data privacy** in mind. Because it utilize
 Everything runs directly on your machine.
 
 ---
-*Built iteratively with robust modular components by Antigravity AI.*
